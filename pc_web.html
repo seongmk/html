@@ -12,11 +12,51 @@
   <!-- 링크공유 -->
   <meta property="og:title" content="메가박스">
   <meta property="og:url" content="https://github.com/seongmk/html">
-  <meta property="og:img" content="images">
+  <meta property="og:img" content="images/logo.png">
   <meta property="og:description" content="최고의 감동을 선택하세요">
-  <title>Document</title>
+  <!-- 파비콘 -->
+  <link rel="shortcut icon" href="images/favicon.png">
+  <!-- jquery -->
+  <script src="js/jquery-3.5.0.min.js"></script>
+  <!-- swiper -->
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <script src="js/swiper.min.js"></script>
+
+  <script>
+    $(function(){
+    var swiper = new Swiper('.swiper-container');
+
+    // skip menu
+    $('.skip>a').focus(function(){
+      $(this).parent('.skip').css('top','0');
+    });
+    $('.skip>a').focusout(function(){
+      $(this).parent('.skip').css('top','-50px');
+    });
+
+    })
+  </script>
+  <link rel="stylesheet" href="css/reset.css">
+
+  <title>라이프시어터,메가박스</title>
+  
+  <style>
+    .skip{width:100%;height:50px;display:flex;justify-content:center;align-items:center;background:#503396;position:absolute;top:-50px;}
+    .skip a{margin:0 5px;border:2px solid transparent;padding:8px 10px;color:white;font-weight:bold;}
+    .skip a:focus{border:2px solid white;}
+  </style>
+
+
 </head>
 <body>
-  <p>pc버전</p>
+  <div class="skip">
+    <div>
+      <a href="#section">본문마로가기</a>
+      <a href="#footrer">푸터바로가기</a>
+    </div>
+  </div>
+  <div class="wrap">
+
+  </div>
 </body>
 </html>
