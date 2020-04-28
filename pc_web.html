@@ -21,43 +21,61 @@
   <!-- swiper -->
   <link rel="stylesheet" href="css/swiper.min.css">
   <script src="js/swiper.min.js"></script>
-
+  <!-- skip -->
+  <script src="js/skip.js"></script>
+  <!-- banner -->
+  <script src="js/banner.min.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  <script src="js/popup_cookie.js"></script>
   <script>
     $(function(){
+      // swiper
       var swiper = new Swiper('.swiper-container');
 
-      // skip menu
-      $('.skip>a').focus(function(){
-        $(this).parent('.skip').css('top','0');
-      });
-      $('.skip>a').focusout(function(){
-        $(this).parent('.skip').css('top','-50px');
-      });
 
-      // close banner
+      $.cookie('pepero','11ea');
 
-      $('.close').click(function(){
-        $('.banner>div').hide();
+      // popup cookie
+      var day3=$('#day3')
+      var allDay=$('#allday')
+      $('#close_btn').click(function(){
+        if(day3.is(':checked')){
+          $.cookie('day3close','true',{espires:3,path:'/'});
+        }else if(allDay.is(':checked')){
+          $.cookie('alldayclose','true',{espires:1000,path:'/'});
+        }
+        $('.pop_up').hide();
       });
+      if($.cookie('day3close')=='true' || $.cookie('alldayclose')=='true'){
+        $('.pop_up').hide();
+      }else{
+        $('.pop_up').show();
+      }
     })
   </script>
+
+
   <link rel="stylesheet" href="css/reset.css">
+
 
   <title>라이프시어터,메가박스</title>
   
+
   <style>
-    .skip{width:100%;height:50px;display:flex;justify-content:center;align-items:center;background:#503396;position:absolute;top:-50px;}
-    .skip a{margin:0 5px;border:2px solid transparent;padding:8px 10px;color:white;font-weight:bold;}
+    .skip{width:100%;height:50px;display:flex;justify-content:center;align-items:center;background:#503396;position:absolute;top:-50px;z-index:1;}
+    .skip a{margin:0 5px;border:2px solid transparent;padding:4px 10px;color:white;font-weight:bold;}
     .skip a:focus{border:2px solid white;}
 
+    .wrap{position:relative;}
+
     /* banner */
-    .banner01{text-align:center;background:rgb(238, 228, 218);position:relative;}
-    .banner02{text-align:center;background:rgb(13, 46, 107);position:relative;}
+    .banner01{text-align:center;background:rgb(238, 228, 218);}
+    .banner02{text-align:center;background:rgb(13, 46, 107);}
     .banner img{display:inline-block;}
     .banner .close{
       width:20px;
       height:20px;
-      border:1px solid black;
+      /* border:1px solid black; */
       background-color:gray;
       color:white;
       text-align:center;
@@ -67,11 +85,43 @@
       right:0;
       bottom:0;
     }
-    /* .banner>div{display:none;} */
+    .banner>div{display:none;position:relative;}
     .banner>div.active{display:block;}
 
-
-  
+    /* popup */
+    .pop_up{
+      position:absolute;
+      left:50%;
+      top:150px;
+      z-index:2;
+      transform:translateX(-50%);
+      box-sizing:border-box;
+      width:400px;
+      height:438px;
+      border-radius:7px;
+      padding-top:30px;
+      background:#ddd;
+      text-align: center;
+      display:none;
+    }
+    .pop_up>h3{
+      display:inline-block;
+      width:145px;
+      margin-bottom:20px;
+      padding:14px 0;
+      border-radius:4px;
+      background:#a5a5a5;
+      font-size:20px;
+      color:white;
+    }
+    .pop_up p{font-size:12px;line-height:2;}
+    .pop_up strong{font-size:12px;font-weight:bold;}
+    ol{margin:10px 0;margin:6px}
+    ol,li{text-align:left;list-style:decimal inside;text-indent:5px;font-size:12px;padding:5px 0;}
+    .pop_up hr{width:388px;height:2px;background:#a2a2a2;margin:20px 6px;}
+    .pop_up form{display:flex;justify-content:flex-end;align-items:center;height:60px;padding-right:20px;background-color:#ecf0f4;border-bottom-left-radius:7px;border-bottom-right-radius:7px;}
+    .pop_up form label{margin-right:30px;}
+    .pop_up form #close_btn[type="button"]{width:16px;text-align:center;cursor:pointer;}
   </style>
 
 </head>
@@ -80,7 +130,9 @@
     <a href="#section">본문바로가기</a>
     <a href="#footrer">푸터바로가기</a>    
   </div>
+  <!-- wrap -->
   <div class="wrap">
+    <!-- banner -->
     <div class="banner">
       <div class="banner01">
         <img src="images/banner01.jpg" alt="banner01">
@@ -90,6 +142,30 @@
         <img src="images/banner02.jpg" alt="banner02">
         <div class="close">X</div>
       </div>
+    </div>
+    <!-- pop_up -->
+    <div class="pop_up">
+      <h3>예방 수칙 안내</h3>
+      <p>
+        코로나바이러스감염증 - 19 예방을 위한<br>
+        <strong>국가 지침 발표</strong><br>
+        중앙방역대책본부 · 중앙사고수습본부
+      </p>
+      <hr>
+      <p>다중이용시설을 대상으로 사업장 집중관리 지침이 적용 됩니다.</p>
+      <ol>
+        <li>극장 내 직원을 통해 발열체크와 이용자 명부를 작성해주시기 바랍니다.</li>
+        <li>상영관 입장 시 마스크를 착용해주시기 바랍니다.</li>
+        <li>마스크 미착용 시 영화관람에 제한이 될 수 있습니다.</li>
+      </ol>
+      <p>메가박스는 안전한 관람 환경을 제공하기 위해 항상 노력하겠습니다.<br>감사합니다.</p>
+      <form>
+        <input type="checkbox" id="day3">
+        <label for="day3">3일간 보지 않기</label>
+        <input type="checkbox" id="allday">
+        <label for="allday">다시 보지 않기</label>
+        <input type="button" value="X" id="close_btn">
+      </form>
     </div>
   </div>
 </body>
