@@ -11,7 +11,7 @@
   <meta name="keywords" content="메가박스,megabox,영화">
   <!-- 링크공유 -->
   <meta property="og:title" content="메가박스">
-  <meta property="og:url" content="https://github.com/seongmk/html">
+  <meta property="og:url" content="https://seongmk.github.io/html/">
   <meta property="og:img" content="images/logo.png">
   <meta property="og:description" content="최고의 감동을 선택하세요">
   <!-- 파비콘 -->
@@ -24,16 +24,21 @@
 
   <script>
     $(function(){
-    var swiper = new Swiper('.swiper-container');
+      var swiper = new Swiper('.swiper-container');
 
-    // skip menu
-    $('.skip>a').focus(function(){
-      $(this).parent('.skip').css('top','0');
-    });
-    $('.skip>a').focusout(function(){
-      $(this).parent('.skip').css('top','-50px');
-    });
+      // skip menu
+      $('.skip>a').focus(function(){
+        $(this).parent('.skip').css('top','0');
+      });
+      $('.skip>a').focusout(function(){
+        $(this).parent('.skip').css('top','-50px');
+      });
 
+      // close banner
+
+      $('.close').click(function(){
+        $('.banner>div').hide();
+      });
     })
   </script>
   <link rel="stylesheet" href="css/reset.css">
@@ -44,19 +49,48 @@
     .skip{width:100%;height:50px;display:flex;justify-content:center;align-items:center;background:#503396;position:absolute;top:-50px;}
     .skip a{margin:0 5px;border:2px solid transparent;padding:8px 10px;color:white;font-weight:bold;}
     .skip a:focus{border:2px solid white;}
-  </style>
 
+    /* banner */
+    .banner01{text-align:center;background:rgb(238, 228, 218);position:relative;}
+    .banner02{text-align:center;background:rgb(13, 46, 107);position:relative;}
+    .banner img{display:inline-block;}
+    .banner .close{
+      width:20px;
+      height:20px;
+      border:1px solid black;
+      background-color:gray;
+      color:white;
+      text-align:center;
+      line-height:20px;
+      cursor:pointer;
+      position:absolute;
+      right:0;
+      bottom:0;
+    }
+    /* .banner>div{display:none;} */
+    .banner>div.active{display:block;}
+
+
+  
+  </style>
 
 </head>
 <body>
   <div class="skip">
-    <div>
-      <a href="#section">본문마로가기</a>
-      <a href="#footrer">푸터바로가기</a>
-    </div>
+    <a href="#section">본문바로가기</a>
+    <a href="#footrer">푸터바로가기</a>    
   </div>
   <div class="wrap">
-
+    <div class="banner">
+      <div class="banner01">
+        <img src="images/banner01.jpg" alt="banner01">
+        <div class="close">X</div>
+      </div>
+      <div class="banner02">
+        <img src="images/banner02.jpg" alt="banner02">
+        <div class="close">X</div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
