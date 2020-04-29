@@ -73,8 +73,16 @@
     .git_hub{width:150px;padding:5px 0;background:tomato;transform:rotate(-45deg);position:fixed;left:-30px;top:30px;z-index:2;cursor:pointer;}
     .git_hub>p{font-size:12px;color:white;text-align:center;background-color:darkred;}
 
+    .content{width:1100px;margin:0 auto;}
+
+
     /* wrap */
-    .wrap{position:relative;}
+    .wrap{
+      position:relative;
+      width:100%;
+      max-width:2000px;
+      margin:0 auto;
+      }
 
     /* banner */
     .banner01{text-align:center;background:rgb(238, 228, 218);}
@@ -130,6 +138,27 @@
     .pop_up form{display:flex;justify-content:flex-end;align-items:center;height:60px;padding-right:20px;background-color:#ecf0f4;border-bottom-left-radius:7px;border-bottom-right-radius:7px;}
     .pop_up form label{margin-right:30px;}
     .pop_up form #close_btn[type="button"]{width:16px;text-align:center;cursor:pointer;}
+
+    
+    .header{
+      height:90px;
+      background:linear-gradient(145deg,#0c0908 10%,#161d2b 60%,#2b1f22 90%);
+    }
+    .header .content{
+      display:flex;
+      flex-flow:row nowrap;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+
+    .section{
+      height:1000px;
+      background:dodgerblue;
+    }
+    .footer{
+      height:300px;background:deepskyblue;}
+    .container{height:100%;}
   </style>
 
 </head>
@@ -140,6 +169,28 @@
   </div>
   <div class="git_hub">
     <p>깃허브로오세요</p>
+  </div>
+  <!-- login form -->
+  <div class="login_form">
+    <div class="content">
+      <div class="login_tit">
+        <p>로그인</p>
+        <img src="images/close.png" alt="닫기" id="close">
+      </div>
+      <form>
+        <input type="text" placeholder="아이디">
+        <input type="password" placeholder="비밀번호">
+        <input type="checkbox" id="save_id">
+        <label for="save_id">아이디저장</label>
+        <input type="button" value="로그인">
+      </form>
+      <ul class="login_menu">
+        <li><a href="#">아이디/비밀번호찾기</a></li>
+        <li><a href="#">회원가입</a></li>
+        <li><a href="#">비회원예매</a></li>
+      </ul>
+      <ul class="sns_menu"></ul>
+    </div>
   </div>
   <!-- wrap -->
   <div class="wrap">
@@ -178,6 +229,49 @@
         <input type="button" value="X" id="close_btn">
       </form>
     </div>
+    <header class="header">
+      <div class="container">
+        <div class="content">
+          <nav class="nav01">
+            <ul class="top_nav">
+              <li><a href="#" title="VIP LOUNGE">VIP LOUNGE</a></li>
+              <li><a href="#" title="맴버쉽">맴버쉽</a></li>
+              <li><a href="#" title="고객센터">고객센터</a></li>
+            </ul>
+            <ul class="bottom_nav">
+              <li><a href="#" title="사이트맵"><img src="images/ham.png" alt="토글메뉴"></a></li>
+              <li><a href="#" title="검색"><img src="images/search.png" alt="검색""></a></li>
+              <li><a href="#" title="영화">영화</a></li>
+              <li><a href="#" title="예매">예매</a></li>
+              <li><a href="#" title="극장">극장</a></li>
+            </ul>
+          </nav>
+          <div class="logo">
+            <img src="images/mainlogo.png" alt="메인로고">
+          </div>
+          <nav class="nav02">
+            <ul class="top_nav">
+              <li><a href="#" title="로그인" id="login">로그인</a></li>
+              <li><a href="#" title="회원가입">회원가입</a></li>
+              <li><a href="#" title="빠른예매">빠른예매</a></li>
+            </ul>
+            <ul class="bottom_nav">
+              <li><a href="#" title="이벤트">이벤트</a></li>
+              <li><a href="#" title="스토어">스토어</a></li>
+              <li><a href="#" title="혜택">혜택</a></li>
+              <li><a href="#" title="스케쥴"><img src="images/schedule.png" alt="스케쥴"></a></li>
+              <li><a href="#" title="마이페이지"><img src="images/mymega.png" alt="마이페이지"></a></li>
+            </ul>
+          </nav>
+        </div>  
+      </div>
+    </header>
+    <section class="section">
+      <div class="container"></div>
+    </section>
+    <footer class="footer">
+      <div class="container"></div>
+    </footer>
   </div>
 </body>
 </html>
