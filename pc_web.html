@@ -30,6 +30,7 @@
   <script src="js/login.min.js"></script>
   <script src="js/sitemap.min.js"></script>
   <script src="js/sub_position.min.js"></script>
+  <script src="js/user_slider.min.js"></script>
   <script>
     $(function(){
       skip();
@@ -62,13 +63,33 @@
         subPosition();
       });
 
+      var cnt=0;
+      $('#prev').click(function(){
+        if(cnt>0){
+          cnt--;
+        }else{
+          cnt=3;
+        }       
+        userSlide(cnt);
+      })
+      $('#next').click(function(){
+        if(cnt<3){
+          cnt++;
+        }else{
+          cnt=0;
+        }
+        userSlide(cnt);
+      })
+
+      
       
     })
   </script>
   <link rel="stylesheet" href="css/reset.css">
 
   <title>라이프시어터,메가박스</title>
-
+  
+  <!-- 무비차트 -->
   <style>
     .skip{
       width:100%;
@@ -484,7 +505,7 @@
     }
   </style>
 
-
+ <!-- 혜택 -->
   <style>
     .section{
       padding:70px 0 120px;
@@ -670,6 +691,130 @@
       50%{top:80px;}
       100%{top:50px;}
     }
+    .bonus{
+      box-sizing: border-box;
+      height:1150px;
+      padding-top:50px;
+      background-image:url('images/bonus_bg.jpg');
+    }
+    
+    .bonus h3{
+      font-size:28px;
+      font-weight:normal;
+      color:#330a94;
+    }
+    .grid_par{
+      display:grid;
+      grid-template-columns:auto auto auto auto auto auto auto auto auto auto auto auto;
+      grid-gap:24px;
+    }
+
+    /* .grid_par>div{
+      background:skyblue;
+    } */
+    .grid_par>div:nth-child(1){
+      grid-column:1/4;
+    }
+    .grid_par>div:nth-child(2){
+      grid-column:4/8;
+    }
+    .grid_par>div:nth-child(3){
+      grid-column:8/13;
+      grid-row:1/3;
+    }
+    .grid_par>div:nth-child(4){
+      grid-column:1/6;
+    }
+    .grid_par>div:nth-child(5){
+      grid-column:6/8;
+    }
+
+    #grid_child01,#grid_child02{
+      overflow:hidden;
+      position:relative;
+      height:325px;
+    }
+    #grid_child01>div,#grid_child02>div{
+      position:absolute;
+      left:0;
+      top:100%;
+      opacity:0;
+      transition:0.3s;
+    }
+    #grid_child02>div{
+      left:100%;
+      top:0;
+    }
+    
+    #grid_child01>div.active{
+      top:0;
+      opacity:1;
+    }
+
+    #grid_child02>div.active{
+      left:0;
+      opacity:1;
+    }
+
+    #grid_child01>ul{
+      width:100%;
+      position:absolute;
+      bottom:20px;
+      display:flex;
+      flex-flow:row nowrap;
+      justify-content:space-between;
+    }
+    #img_bar{
+      padding:6px;
+    }
+    .img_bar_par{
+      width:160px;
+      height:2px;
+      background:#ddd;
+      display:flex; 
+    }
+    
+    .img_bar_par>div{
+      text-indent:-9999px;
+      flex:1;
+      height:2px;
+    }
+
+    .img_bar_par>.active{
+      background:#330a94;
+    }
+
+    #img_btn span{
+      font-weight:bolder;
+      font-size:16px;
+      color:gray;
+      cursor:pointer;
+    }
+
+    #img_btn span:hover{
+      color:#330a94;
+    }
+
+    #img_btn,#img_num{
+      display:flex;
+      justify-content:center;
+    }
+
+    #img_num{
+      padding-top:3px;
+    }
+    #grid_child02{
+
+    }
+    #grid_child03,#grid_child04,#grid_child05{
+      overflow:hidden;
+      border-radius:5px;
+    }
+
+    #grid_child03>img{
+      height:100%
+    }
+    
 
   </style>
 
@@ -968,7 +1113,7 @@
                 <div class="swiper-slide slide01">
                   <ul>
                     <li class="poster">
-                      <img src="images/poster01.jpg" alt="포스터01">
+                      <img src="images/poster01.jpg" alt="poster01">
                       <div class="poster_number">1</div>
                       <div class="poster_txt">
                         <p>팝, 록, 클래식, 컨트리, 펑크,테크sh, K-POP까지<br>세상의 모든 음악이 쏟아진다!<br>노래와 춤을 즐기며 평화로운 나<br>날을 보내던 팝 트롤 '파피'와 '브<br>랜치' 그리고 친구들.<br>어느날 '파피'는 자신들 외에도</p>
@@ -1179,8 +1324,106 @@
             </div>
           </div>
         </article>
-        <article class="article bonus">
+      </div>
+    </section>
 
+    <section class="bonus">
+      <div class="container">
+        <article class="article">
+          <h3>혜택</h3>
+          <div class="contesnt grid_par">
+            <div id="grid_child01">
+              <div class="img00 active">
+                <img src="images/bonus00.jpg" alt="보너스00">
+              </div>
+              <div class="img01">
+                <img src="images/bonus01.jpg" alt="보너스01">
+              </div>
+              <div class="img02">
+                <img src="images/bonus02.jpg" alt="보너스02">
+              </div>
+              <div class="img03">
+                <img src="images/bonus03.jpg" alt="보너스03">
+              </div>
+              <ul>
+                <li id="img_bar">
+                  <div class="img_bar_par">
+                    <div class="active">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                  </div>
+                </li>
+                <li id="img_btn">
+                  <span id="prev">&lt&nbsp&nbsp</span>
+                  <span id="next">&gt</span>
+                </li>
+                <li id="img_num">
+                  <span id="page">1</span>
+                  <span>&nbsp/&nbsp</span>
+                  <span id="pages">4</span>
+                </li>
+              </ul>
+
+            </div>
+            <div id="grid_child02">
+              <div class="img00 active">
+                <img src="images/bonusright00.jpg" alt="보너스00">
+              </div>
+              <div class="img01">
+                <img src="images/bonusright01.jpg" alt="보너스01">
+              </div>
+              <div class="img02">
+                <img src="images/bonusright02.jpg" alt="보너스02">
+              </div>
+              <div class="img03">
+                <img src="images/bonusright03.jpg" alt="보너스03">
+              </div>
+            </div>
+            <div id="grid_child03">
+              <img src="images/bonusbanner00.jpg" alt="보너스배너00">
+            </div>
+            <div id="grid_child04">
+              <img src="images/bonusbanner01.jpg" alt="보너스배너01">
+            </div>
+            <div id="grid_child05">
+              <img src="images/bonusbanner02.jpg" alt="보너스베너">
+            </div>
+          </div>
+        </article>
+        <article class="article bonus_quick_menu">
+          <ul class="content">
+            <li>
+              <a href="#">
+                <img src="images/ico-bonus00.png" alt="보너스00">
+                <p>VIP LOUNGE</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/ico-bonus01.png" alt="보너스00">
+                <p>멤버쉽</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/ico-bonus02.png" alt="보너스00">
+                <p>할인카드안내</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/ico-bonus03.png" alt="보너스00">
+                <p>이벤트</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="images/ico-bonus04.png" alt="보너스00">
+                <p>스토어</p>
+              </a>
+            </li>
+          </ul>
         </article>
       </div>
     </section>
