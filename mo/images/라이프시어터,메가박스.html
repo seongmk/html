@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://127.0.0.1:5500/mo/mobile.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 제작자 -->
+  <meta name="author" content="hong">
+  <!-- 설명 -->
+  <meta name="description" content="메가박스 사이트입니다.">
+  <!-- 키워드 -->
+  <meta name="keywords" content="메가박스, megabox, 영화, movie">
+  <!-- 링크공유 -->
+  <meta property="og:title" content="메가박스">
+  <meta property="og:url" content=" https://seongmk.github.io/megabox/">
+  <meta property="og:image" content="../images/ogimage.png">
+  <meta property="og:description" content="최고의 감동 메가박스와 함께 하세요">
+  <!-- 파비콘 -->
+  <link rel="shortcut icon" href="http://127.0.0.1:5500/images/favicon.png">
+  <!-- jQuery   -->
+  <script src="./라이프시어터,메가박스_files/jquery-3.5.0.min.js.다운로드"></script>
+  <!-- swiper -->
+  <link rel="stylesheet" href="./라이프시어터,메가박스_files/swiper.min.css">
+  <script src="./라이프시어터,메가박스_files/swiper.min.js.다운로드"></script>
+
+  <link rel="stylesheet" href="./라이프시어터,메가박스_files/reset.css">
+  <style>
+    .static_top,.statioc_bottom{
+      position:fixed;
+      left:0;
+      z-index:9999;
+      display:flex;
+      justify-content:space-between;
+      box-sizing: border-box;
+      width:100%;
+      padding:16px;
+      background:black;
+    }
+    .static_top{top:0;}
+    .static_top>li:nth-child(1){width:30px;}
+    .static_top>li:nth-child(2){width:120px;}
+    /* .static_top>li:nth-child(3){width:30px;} */
+    .static_top>li:nth-child(1) img{width:100%;}
+    .static_top>li:nth-child(2) img{width:100%;}
+    .static_top>li:nth-child(3) img{width:30px;}
+
+    .statioc_bottom{bottom:0;}
+    .wrap{
+      height:1000px;
+      background:#330a94;
+    }
+  </style>
+
+  <title>라이프시어터,메가박스</title>
+</head>
+<body>
+  <div class="static_menu">
+    <ul class="static_top">
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-ticket-w.png" alt="ticket">
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html">
+          <img src="./라이프시어터,메가박스_files/logo-white.png" alt="logo">
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-alarm.png" alt="alarm">
+          <img src="./라이프시어터,메가박스_files/ico-burger-w.png" alt="burger">
+        </a>
+      </li>
+    </ul>
+    <ul class="statioc_bottom">
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-movie.png" alt="movie">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-movie-on.png" alt="movie">
+          <p>영화</p>
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-store.png" alt="store">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-store-on.png" alt="store">
+          <p>스토어</p>
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-reserve.png" alt="reserve">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-reserve-on.png" alt="reserve">
+          <p>예매</p>
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-event.png" alt="event">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-event-on.png" alt="event">
+          <p>이벤트</p>
+        </a>
+      </li>
+      <li>
+        <a href="http://127.0.0.1:5500/mo/mobile.html#">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-mymega.png" alt="mymega">
+          <img src="./라이프시어터,메가박스_files/ico-bnb-mymega-on.png" alt="mymega">
+          <p>MY</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="wrap">
+
+  </div>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body></html>
