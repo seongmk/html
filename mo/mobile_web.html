@@ -33,6 +33,7 @@
           alert('아직 로그인폼이 안만들어 졌어요!')
         }
       });
+
       $(window).scroll(function(){
         var scrTop=$(window).scrollTop();
         console.log(scrTop);
@@ -41,7 +42,13 @@
         }else{
           $('.static_top').css('background-color','rgba(0,0,0,0');
         }
-      })
+      });
+
+      $('#close_btn').click(function(){
+        $('.login_form').hide();
+      });
+
+
     })
   </script>
 
@@ -73,7 +80,33 @@
   
   <!-- 로그인스타일 -->
   <style>
+    .login_tit::before{
+      content:'';
+      display:block;
+    }
+    .login_tit{
+      display:flex;
+      justify-content:space-between;
+      padding:10px 0;
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      background:white;
+    }
+    .login_tit>p{
+      font-size:20px;
+    }
+    .login_tit>img{
+      width:26px;
+    }
 
+    .login_content{
+      padding-top:50px;
+    }
+    .static_menu{
+      display:none;
+    }
   </style>
   
   
@@ -90,6 +123,9 @@
 
   <!-- 모바일기본스크롤 -->
   <style>
+    .login_form,.login_form a{
+      color:#666;
+    }
     .container01,.container02{
       box-sizing:border-box;
       width:100%;
@@ -166,7 +202,7 @@
       <form>
         <div class="login_tit">
           <p>로그인</p>
-          <img id="close" src="images/ico-close.png" alt="로그인닫기">
+          <img id="close_btn" src="images/ico-close.png" alt="로그인닫기">
         </div>
         <div class="login_content">
           <input type="text" placeholder="아이디">
