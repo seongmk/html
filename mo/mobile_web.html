@@ -102,8 +102,47 @@
     }
 
     .login_content{
-      padding-top:50px;
+      padding-top:100px;
     }
+    .id_pass{
+      width:100%;
+      margin-bottom:20px;
+      border-top:none;
+      border-right:none;
+      border-left:none;
+      border-bottom:1px solid rgba(0,0,0,0.3);
+      padding:10px 0;
+    }
+    .id_pass::placeholder{
+      color:rgba(0,0,0,0.5);
+    }
+    .id_save{
+      display:flex;
+      margin-bottom:30px;
+    }
+    .id_save>label{
+      display:flex;
+      flex-flow:row nowrap;
+      align-items:center;
+      font-size:16px;
+    }
+    .id_save>label::before{
+      content:'';
+      width:20px;
+      height:20px;
+      background-image:url('images/bg-m-check-type3.png');
+      background-size:cover;
+      background-position:left;
+      margin-right:8px;
+    }
+    .id_save>label>span{
+      font-size:16px;
+    }
+
+    #save_id:checked~label::before{
+      background-position:right;
+    }
+    #save_id{display:none;}
     .static_menu{
       display:none;
     }
@@ -129,7 +168,7 @@
     .container01,.container02{
       box-sizing:border-box;
       width:100%;
-      margin:0 16px;
+      /* margin:0 16px; */
     }
     .container02{
       margin:0 0 0 16px;
@@ -205,11 +244,11 @@
           <img id="close_btn" src="images/ico-close.png" alt="로그인닫기">
         </div>
         <div class="login_content">
-          <input type="text" placeholder="아이디">
-          <input type="password" placeholder="비밀번호">
+          <input class="id_pass" type="text" placeholder="아이디">
+          <input class="id_pass" type="password" placeholder="비밀번호">
           <div class="id_save">
             <input type="checkbox" id="save_id">
-            <label for="save_id">아이디저장</label>
+            <label for="save_id"><span>아이디저장</span></label>
           </div>
           <input type="button" value="로그인">
           <ul class="login_search">
