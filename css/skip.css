@@ -1,0 +1,16 @@
+@charset 'utf-8';
+
+/* skip style */
+.skip_menu{
+  display:inline-block;
+}
+.skip_menu>li{
+  padding:10px;
+  position:absolute;
+  left:0;
+  top:-100%;
+  background:red;
+}
+.skip_menu>li>a{
+  color:white;
+}
