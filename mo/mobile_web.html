@@ -24,343 +24,399 @@
 
   <link rel="stylesheet" href="../css/reset.css">
   <script>
-    $(function(){
+      $(function(){
+        // 로그인폼보기
+        $('#ticket_btn,#alarm_btn,#login_txt').click(function(){
+          var conFirm=confirm('로그인후 이용가능 합니다.\n로그인 하시겠습니까?');
+          console.log(conFirm);
+          if(conFirm){
+            $('.static_menu,.wrap,.burger_menu').hide();
+            $('.login_form').show();
+          }
+        });
 
-      // 로그인폼
-      $('#ticket_btn,#alram_btn').click(function(){
-        var conFirm=confirm('로그인후 이용가능 합니다.\n로그인 하시겠습니까?')
-        console.log(conFirm);
-        if(conFirm){
-          $('.static_menu,.wrap,burger_menu').hide();
-          $('.login_form').show();
-          // $('.login_form').hide('display','block');
-        }
-      });
+        // 로그인폼닫기
+        $('#close_btn').click(function(){
+          $('.static_menu,.wrap').show();
+          $('.login_form').hide();
+        });
+        $('#burger_close_btn').click(function(){
+          $('.burger_menu').hide();
+        });
 
-      // 로그인폼 닫기
-      $('#close_btn').click(function(){
-        $('.static_menu,.wrap').show();
-        $('.login_form').hide();
-      });
-      $('#burger_colse_btn').click(function(){
-        $('.burger_menu').hide();
-      });
+        // 화면스크롤이벤트
+        $(window).scroll(function(){
+          var scrTop=$(window).scrollTop();
+          console.log(scrTop);
+          if(scrTop>30){
+            $('.static_top').css('background-color','rgba(0,0,0,0.8)');
+          }else{
+            $('.static_top').css('background-color','rgba(0,0,0,0)');
+          }
+        });
 
-      // 화면스크롤이벤트
-      $(window).scroll(function(){
-        var scrTop=$(window).scrollTop();
-        console.log(scrTop);
-        if(scrTop>30){
-          $('.static_top').css('background-color','rgba(0,0,0,0.8)');
-        }else{
-          $('.static_top').css('background-color','rgba(0,0,0,0)');
-        }
-      });
+        // 서브멤버 토글
+        $('#member_btn').click(function(){
+          $('.member_sub').Toggle();
+          var tmp=$('member_sub').css('display');
+          if(tmp=='block'){
+            $('.center').addClass('active_padding');
+          }else{
+            $('.center').removeClass('active_padding');
+          }
+        });
 
+        // 햄버거메뉴
+        $('#toggle_btn').click(function(){
+          $('.burger_menu').css('display','flex');
+        });
 
+        
+      })
+    </script>
 
-    })
-  </script>
+    <!-- 모바일기본스타일 -->
+    <style>
+      *{
+        box-sizing:border-box;
+      }
+      body{
+        overflow:scroll;
+        -ms-overflow-style:none;
+        /* 나중에 지울것 */
+        overflow:hidden;
+      }
+      body::-webkit-scrollbar{
+        display:none;
+      }
+      
+      .container01,.container02{
+        width:100%;
+        padding:0 16px;
+      }
+      .container02{
+        padding:0 0 0 16px;
+      }
+      
+    </style>
 
+    <!-- 상/하단 고정바 스타일 -->
+    <style>
+      .static_top,.static_bottom{
+       position:fixed;
+       left:0;
+       z-index:9999;
+       display:flex;
+       justify-content:space-between;
+       box-sizing:border-box;
+       width:100%;
+       padding:16px;       
+      }
+      
+      .static_top{
+        top:0;
+        padding-bottom:3px;
+        transition:0.1s;
+      }
+      
+      .static_top>li:nth-child(1){
+        width:30px;
+      }
 
-  <!-- 모바일기본스크롤 -->
-  <style>
-    *{box-sizing:border-box;}
-    body{
-      overflow:scroll;
-      -ms-overflow-style:none;
-      /* 나중에지울것 */
-      overflow:hidden;
-    }
+      .static_top>li:nth-child(2){
+        margin-top:-12px;
+        width:120px;
+      }
 
-    body::-webkit-scrollbar{
-      display:none;
-    }
+      .static_top>li:nth-child(3) img{
+        width:30px;
+      }
 
-    .container01,.container02{
-      width:100%;
-      padding:0 16px;
-    }
+      .static_top>li img{
+        width:100%;
+      }
 
-    .container02{
-      padding:0 0 0 16px;
-    }
-  </style>
+      .static_bottom{
+        bottom:0;
+      }
+      
+    </style>
 
-  <!-- 상/하단 고정 스타일 -->
-  <style>
-    .static_top,.statioc_bottom{
-      position:fixed;
-      left:0;
-      z-index:9999;
-      display:flex;
-      justify-content:space-between;
-      box-sizing: border-box;
-      width:100%;
-      padding:16px;
-    }
-    .static_top{
-      top:0;
-      padding-top:3px;
-      transition:0.1s;
-    }
-    .static_top>li:nth-child(1){width:30px;}
-    .static_top>li:nth-child(2){margin-top:-12px;width:120px;}
-    .static_top>li:nth-child(3) img{width:30px;}
-    .static_top>li img{width:100%;}
-
-    .statioc_bottom{bottom:0;}
-    
-  </style>
-  
-  <!-- 로그인스타일 -->
-  <style>
-    .login_form{
-      display:none;
-      position:absolute;
-      left:0;
-      top:0;
-      width:100%;
-      z-index:10000;
-      background-color:white;
-    }
-
-    .login_tit::before{content:'';display:block;}
-
-    .login_tit{
-      display:flex;
-      justify-content:space-between;
-      padding:10px 0;
-      position:fixed;
-      left:0;
-      top:0;
-      width:100%;
-      background:white;
-    }
-
-    .login_tit>p{
-      font-size:20px;
-    }
-
-    .login_tit>img{
-      width:26px;
-      cursor:pointer;
-    }
-
-    .login_content{
-      padding-top:100px;
-    }
-
-    .id_pass{
-      width:100%;
-      margin-bottom:20px;
-      border-top:none;
-      border-right:none;
-      border-left:none;
-      border-bottom:1px solid rgba(0,0,0,0.3);
-      padding:10px 0;
-    }
-    .id_pass::placeholder{
-      color:rgba(0,0,0,0.5);
-    }
-    .id_save{
-      display:flex;
-      margin-bottom:30px;
-    }
-    .id_save>label{
-      display:flex;
-      flex-flow:row nowrap;
-      align-items:center;
-      font-size:16px;
-    }
-    .id_save>label::before{
-      content:'';
-      width:20px;
-      height:20px;
-      background-image:url('images/bg-m-check-type3.png');
-      background-size:cover;
-      background-position:left;
-      margin-right:8px;
-    }
-
-    .id_save>label>span{font-size:16px;}
-
-    #save_id:checked~label::before{background-position:right;}
-
-    #save_id{display:none;}
-
-    input[value="로그인"]{
-      width:100%;
-      border:none;
-      padding:16px;
-      background:#6437bf;
-      color:white;
-      font-size:18px;
-      cursor:pointer;
-    }
-
-    .login_search,.login_sns{
+    <!-- 로그인폼스타일 -->
+    <style>
+      .login_form{
+        display:none;
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        z-index:10000;
+        background-color:white;
+      }
+      .login_form,.login_form a{
+        color:#666;
+      }
+      .login_tit::before{
+        content:'';
+        display:block;
+      }
+      .login_tit{
+        display:flex;
+        justify-content:space-between;
+        padding:10px 0;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        background-color:white;
+      }
+      .login_tit p{
+        font-size:20px;
+      }
+      .login_tit img{
+        width:26px;
+      }
+      .login_content{
+        padding-top:100px;
+      }
+      .id_pass{
+        width:100%;
+        margin-bottom:20px;
+        border-top:none;
+        border-right:none;
+        border-left:none;
+        border-bottom-color:rgba(0,0,0,0.2);
+        padding:10px 0;
+      }
+      .id_pass::placeholder{
+        color:rgba(0,0,0,0.5);
+      }
+      .id_save{
+        display:flex;
+        margin-bottom:30px;
+      }
+      .id_save>label{
+        display:flex;
+        flex-flow:row nowrap;
+        align-items:center;
+      }
+      .id_save>label>span{
+        font-size:16px;
+      }
+      .id_save>label::before{
+        content:'';
+        width:20px;
+        height:20px;
+        background-image:url(images/bg-m-check-type3.png);
+        background-size:cover;
+        background-position:left;
+        margin-right:10px;
+      }
+      #save_id:checked~label::before{
+        background-position:right;
+      }
+      #save_id{
+        display:none;
+      }
+      input[value="로그인"]{
+        width:100%;
+        border:none;
+        padding:16px;
+        background-color:#6437bf;
+        color:white;
+        font-size:18px;
+        cursor:pointer;
+      }
+      .login_search,.login_sns{
         width:50%;
         margin:30px auto;
         display:flex;
         justify-content:space-between;
-    }
-    .login_sns>li{
-      width:40px;
-    }
-    .login_sns img{
-      width:100%;
-    }
-  </style>
+      }
+      .login_sns>li{
+        width:40px;
+      }
+      .login_sns img{
+        width:100%;
+      }
 
 
-  <!-- 버거메뉴 스타일 -->
-  <style>
-    .burger_menu{
-      overflow:scroll;
-      -ms-overflow-style:none;
-      position:fixed;
-      left:0;
-      top:0;
-      z-index:10000;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.5);
-      display:flex;
-      justify-content:flex-end;
-    }
-    .burger_menu::-webkit-scrollbar{
-      display:none;
-    }
-   
-    .burger_menu nav{
-      width:360px;
-      height:100%;
-      background-color:white;
-    }
-    .nav_top{
-      position:fixed;
-      right:0;
-      top:0;
-      width:360px;
-      background:#160f2b;
-    }
-    .nav_header,.nav_join{
-      padding:10px 20px 30px;
-      display:flex;
-      align-items:center;
-    }
-    .nav_header>p{
-      flex:8;
-      font-size:16px;
-      color:white;
-    }
-    .nav_header>p>span{
-      display:inline-block;
-      text-decoration:underline;
-      cursor:pointer;
-      font-size:16px;
-    }
-    .nav_header>a{
-      flex:1;
-    }
-    .nav_header img{
-      width:100%;
-    }
-    .nav_join{
-      border-top:1px solid rgba(255,255,255,0.5);
-      padding:16px 0;
-    }
-    .nav_join>a{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      color:rgba(255,255,255,0.5);
-    }
-    .nav_join>a>img{
-      width:16px;
-      margin-right:10px;
-    }
-    .nav_join>a:nth-child(1){
-      flex:2;
-    }
 
-    .nav_join>a:nth-child(2){
-      flex:3;
-    }
 
-    .nav_bottom{
-      position:fixed;
-      right:0;
-      bottom:0;
-      width:360px;
-    }
+    </style>
 
-    .nav_bottom img{
-      width:100%;
-    }
+    <!-- 버거메뉴 스타일 -->
+    <style>
+      .burger_menu{
+        overflow:scroll;
+        -ms-overflow-style:none;
+        position:fixed;
+        left:0;
+        top:0;
+        z-index:10000;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        display:none;
+        justify-content:flex-end;
+      }
+      .burger_menu::-webkit-scrollbar{
+        display:none;
+      }
+     
+      .burger_menu nav{
+        width:360px;
+        height:100%;
+        background-color:white;
+      }
+      .nav_top{
+        position:fixed;
+        right:0;
+        top:0;
+        width:360px;
+        background:#160f2b;
+      }
+      .nav_header,.nav_join{
+        padding:10px 20px 30px;
+        display:flex;
+        align-items:center;
+      }
+      .nav_header>p{
+        flex:8;
+        font-size:16px;
+        color:white;
+      }
+      .nav_header>p>span{
+        display:inline-block;
+        text-decoration:underline;
+        cursor:pointer;
+        font-size:16px;
+      }
+      .nav_header>a{
+        flex:1;
+      }
+      .nav_header img{
+        width:100%;
+      }
+      .nav_join{
+        border-top:1px solid rgba(255,255,255,0.5);
+        padding:16px 0;
+      }
+      .nav_join>a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        color:rgba(255,255,255,0.5);
+      }
+      .nav_join>a>img{
+        width:16px;
+        margin-right:10px;
+      }
+      .nav_join>a:nth-child(1){
+        flex:2;
+      }
+      .nav_join>a:nth-child(2){
+        flex:3;
+      }
+      .nav_bottom{
+        position:fixed;
+        right:0;
+        bottom:0;
+        width:360px;
+      }
+      .nav_bottom img{
+        width:100%;
+      }
+      .nav_content{
+        padding:130px 0;
+      }
+      .nav_quick_icon{
+        display:flex;
+        flex-flow:row wrap;
+      }
+      .nav_quick_icon>li{
+        width:33.33333333333333%;
+        padding:20px 0;
+        text-align:center;
+      }
+      .nav_quick_icon>li img{
+        width:60px;
+        margin-bottom:6px;
+        border:1px solid rgba(0,0,0,0.2);
+        border-radius:50%;
+        padding:10px;
+      }
+      .nav_list{
+        background-color:white;
+      }
+      .nav_list>li{
+        border-top:1px solid rgba(0,0,0,0.2);
+        padding:16px;
+      }
+      .nav_list a{
+        display:inline-block;
+        color:rgba(0,0,0,0.8);
+        width:100%;
+        height:100%;
+      }
+      .nav_list>li:last-child>a{
+        color:#14b9cb;
+        display:flex;
+        align-items:center;
+      }
+      .nav_list>li:last-child>a::before{
+        content:'';
+        display:inline-block;
+        clear:both;
+        width:20px;
+        height:20px;
+        background-image:url('images/ico-rnb-notice.png');
 
-    .nav_quick_icon{
-      display:flex;
-      flex-flow:row wrap;
-      justify-content:space-around;
-    }
+      }
 
-    .nav_quick_icon>li{
-      width:33.3333333333333333%;
-      padding:20px 0;
-      text-align: center;
-    }
+      #member_btn{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+      }
 
-    
-    .nav_quick_icon>li img{
-      width:60px;
-      margin-bottom:6px;
-      border-radius:50%;
-      border:1px solid #333;
-      padding:10px;
-    }
+      #member_btn::after{
+        content:'';
+        display:block;
+        width:20px;
+        height:20px;
+        background-image:url('images/ico-updown-off.png');
+        background-size:cover;
+      }
+      .member_main{
+        position:relative;
+      }
+      .member_sub{
+        position:absolute;
+        left:0;
+        top:100%;
+        width:100%;
+        display:none;
+        padding:10px;
+        background-color:#999;
+      }
+      .member_sub>li{
+        padding:10px 0;
+      }
+      .active_padding{
+        padding-top:122px;
+      }
 
-    .nav_list{
-      background-color:white;
-      padding:16px
-    }
+      
+    </style>
 
-    .nav_list a{
-      display:inline-block;
-      color:rgba(0,0,0,0.8);
-      width:100%;
-    }
-
-    #member_btn{
-      display:flex;
-      justify-content: space-between;
-    }
-
-    #member_btn::after{
-      content:'';
-      display: block;
-      width:20px;
-      height:20px;
-      background-image:url('images/ico-updown-off.png');
-      background-size:cover;
-    }
-
-    .member_sub{
-      padding:20px 0;
-      background-color:#f9f9f9;
-    }
-
-  </style>
-
-  <!-- wrap스타일 -->
-  <style>
-  .wrap{
-    height:1000px;
-    background:#330a94;
-  }
-  </style>
-
+    <!-- wrap스타일 -->
+    <style>
+      .wrap{
+        height:1000px;
+        background:purple;
+      }
+    </style>
 
 
 
@@ -558,17 +614,17 @@
               제휴/할인 안내
             </a>
           </li>
-          <li>
+          <li class="member_main">
             <a href="#" id="member_btn">
               멤버십 안내
             </a>
             <ul class="member_sub">
-              <li><a href="#">스페셜 멤버십</a></li>
-              <li><a href="#">멤버십안내</a></li>
-              <li><a href="#">VIP LOUNGE</a></li>
+              <li><a href="#">· 스페셜 멤버십</a></li>
+              <li><a href="#">· 멤버십안내</a></li>
+              <li><a href="#">· VIP LOUNGE</a></li>
             </ul>
           </li>
-          <li>
+          <li class="center">
             <a href="#">
               고객센터
             </a>
