@@ -12,6 +12,12 @@
   
    [구조도2](https://github.com/seongmk/megabox/blob/master/images/poster10.jpg)
    
-   <img width="30px" src="https://github.com/seongmk/megabox/blob/master/images/poster10.jpg" al=t"구조도">
+   <img width="30px" src="https://github.com/seongmk/megabox/blob/master/images/poster10.jpg" alt="구조도">
    
 ## 3. 참조
+
+'''
+
+  [메가박스](https://www.megabox.co.kr/)
+  
+  '''
