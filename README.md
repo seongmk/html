@@ -16,8 +16,9 @@
    
 ## 3. 참조
 
-'''
+ <Pre>
 
   [메가박스](https://www.megabox.co.kr/)
   
-  '''
+  
+  </Pre>
