@@ -8,5 +8,5 @@
    * jQuery
 
 ## 2. 구조
-
+  ![구조도](https://github.com/seongmk/megabox/blob/master/images/poster05.jpg)
 ## 3. 참조
