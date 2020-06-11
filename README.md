@@ -1,3 +1,5 @@
+***
+
 # MEGABOX Web Ppage
 
 ## 1. 기술
@@ -17,8 +19,15 @@
 ## 3. 참조
 
  <Pre>
-
-  [메가박스](https://www.megabox.co.kr/)
+    [메가박스](https://www.megabox.co.kr/)
+ </Pre>
+ 
+  **[cdn]{http:://http:://cdnjs.com)**
+  
+  ~[jQuery](http://www.jquery.com)~
+  
+  ~~**
+ 
+ 
   
   
-  </Pre>
