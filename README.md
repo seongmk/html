@@ -3,7 +3,7 @@
 ## 1. 기술
  * HTML
  * CSS
- * javascript
+ * javaScript
 
 ## 2. 구조
 
