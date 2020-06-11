@@ -4,6 +4,8 @@
  * HTML
  * CSS
  * jS
+  * VaillajS
+  * jQuery
 
 ## 2. 구조
 
